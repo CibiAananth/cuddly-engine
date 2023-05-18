@@ -23,7 +23,7 @@ export const selectNodeFactory = nodeFactory(
   () => ({ item: null }),
 );
 
-export const SelectNodeSettings = ({ nodeId }) => {
+export function SelectNodeSettings({ nodeId }) {
   const node = useNodeStore(state => state.nodes.find(n => n.id === nodeId));
   const updateNode = useNodeStore(state => state.updateNode);
   const clearSelectedNode = useNodeStore(state => state.clearNodeSelection);
@@ -63,7 +63,7 @@ export const SelectNodeSettings = ({ nodeId }) => {
       </Flex>
     </>
   );
-};
+}
 
 export const SelectNodeBlock = () => (
   <NodeBlockComposer
