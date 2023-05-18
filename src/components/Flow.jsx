@@ -12,7 +12,7 @@ import ReactFlow, {
 
 // utils
 import { useEdgeStore, useNodeStore } from '@/hooks/useStore';
-import { DATA_TRANSFER_TYPE } from '@/constants/utils';
+import { DATA_TRANSFER_MIME_TYPE } from '@/constants/utils';
 
 // components
 import { createNode } from '@/components/Nodes/nodeFactory';
@@ -107,7 +107,7 @@ export default function Flow() {
       event.preventDefault();
 
       // check if the dropped element is valid
-      const nodeType = event.dataTransfer.getData(DATA_TRANSFER_TYPE);
+      const nodeType = event.dataTransfer.getData(DATA_TRANSFER_MIME_TYPE);
       if (typeof nodeType === 'undefined' || !nodeType) {
         return;
       }
