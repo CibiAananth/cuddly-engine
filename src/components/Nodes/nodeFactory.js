@@ -1,15 +1,5 @@
 /** @format */
 
-// components
-import {
-  MessageNodeSettings,
-  MESSAGE_NODE_IDENTIFIER,
-} from '@/components/Nodes/MessageNode';
-import {
-  SelectNodeSettings,
-  SELECT_NODE_IDENTIFIER,
-} from '@/components/Nodes/SelectNode';
-
 /**
  * @param {string} identifier
  * @param {function} settings
@@ -24,7 +14,7 @@ import {
  *  nodeId => ({ message: `Default message for ${nodeId}` }),
  * );
  */
-const nodeFactory = (identifier, settings, dataComposer) => {
+export const nodeFactory = (identifier, settings, dataComposer) => {
   // node defaults
   const defaults = {
     draggable: true,
@@ -48,36 +38,3 @@ const nodeFactory = (identifier, settings, dataComposer) => {
     };
   };
 };
-
-// node factories
-const messageNodeFactory = nodeFactory(
-  MESSAGE_NODE_IDENTIFIER,
-  MessageNodeSettings,
-  nodeId => ({ message: `Default message for ${nodeId}` }),
-);
-
-const selectNodeFactory = nodeFactory(
-  SELECT_NODE_IDENTIFIER,
-  SelectNodeSettings,
-  () => ({ item: null }),
-);
-
-const nodeCreator = {
-  [MESSAGE_NODE_IDENTIFIER]: messageNodeFactory,
-  [SELECT_NODE_IDENTIFIER]: selectNodeFactory,
-};
-
-export function createNode(type, position) {
-  if (!type) {
-    throw new Error('Node type is required');
-  }
-  if (!position) {
-    throw new Error('Node position is required');
-  }
-
-  if (!nodeCreator[type]) {
-    throw new Error(`Node type: ${type} is not supported`);
-  }
-
-  return nodeCreator[type](position);
-}

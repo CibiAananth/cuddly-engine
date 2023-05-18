@@ -15,11 +15,12 @@ import { useEdgeStore, useNodeStore } from '@/hooks/useStore';
 import { DATA_TRANSFER_MIME_TYPE } from '@/constants/utils';
 
 // components
-import { createNode } from '@/components/Nodes/nodeFactory';
 import MessageNode, {
+  messageNodeFactory,
   MESSAGE_NODE_IDENTIFIER,
 } from '@/components/Nodes/MessageNode';
 import SelectNode, {
+  selectNodeFactory,
   SELECT_NODE_IDENTIFIER,
 } from '@/components/Nodes/SelectNode';
 
@@ -36,6 +37,12 @@ const flowViewSettings = {
 const nodeTypes = {
   [MESSAGE_NODE_IDENTIFIER]: MessageNode,
   [SELECT_NODE_IDENTIFIER]: SelectNode,
+};
+
+// node creators
+const nodeCreator = {
+  [MESSAGE_NODE_IDENTIFIER]: messageNodeFactory,
+  [SELECT_NODE_IDENTIFIER]: selectNodeFactory,
 };
 
 export default function Flow() {
@@ -120,7 +127,7 @@ export default function Flow() {
       });
 
       // create a new node and add it to the store
-      const newNode = createNode(nodeType, position);
+      const newNode = nodeCreator[nodeType](position);
       addNode(newNode);
     },
     [reactFlowInstance, addNode],
