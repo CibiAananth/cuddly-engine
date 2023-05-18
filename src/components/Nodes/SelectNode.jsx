@@ -13,6 +13,7 @@ import { useNodeStore } from '@/hooks/useStore';
 import NodeComposer from './NodeComposer';
 import NodeBlockComposer from './NodeBlockComposer';
 
+// constants
 export const SELECT_NODE_IDENTIFIER = 'selectNode';
 
 export const SelectNodeSettings = ({ nodeId }) => {
