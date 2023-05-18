@@ -24,7 +24,7 @@ export const messageNodeFactory = nodeFactory(
   nodeId => ({ message: `Default message for ${nodeId}` }),
 );
 
-export const MessageNodeSettings = ({ nodeId }) => {
+export function MessageNodeSettings({ nodeId }) {
   const node = useNodeStore(state => state.nodes.find(n => n.id === nodeId));
   const updateNode = useNodeStore(state => state.updateNode);
   const clearSelectedNode = useNodeStore(state => state.clearNodeSelection);
@@ -56,7 +56,7 @@ export const MessageNodeSettings = ({ nodeId }) => {
       </Flex>
     </>
   );
-};
+}
 
 export const MessageNodeBlock = () => (
   <NodeBlockComposer
