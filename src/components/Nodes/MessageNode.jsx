@@ -13,6 +13,7 @@ import { useNodeStore } from '@/hooks/useStore';
 import NodeComposer from './NodeComposer';
 import NodeBlockComposer from './NodeBlockComposer';
 
+// constants
 export const MESSAGE_NODE_IDENTIFIER = 'messageNode';
 
 export const MessageNodeSettings = ({ nodeId }) => {

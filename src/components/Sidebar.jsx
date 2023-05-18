@@ -73,6 +73,8 @@ export default function Sidebar() {
       });
     }
 
+    // check if all nodes have a target handle
+    // To check if a target handle is not missing in more than one node, we compare the number of edges with the number of nodes - 1, since the first node doesn't have a target handle
     if (edges.length !== nodes.length - 1) {
       return notifications.show({
         color: 'red',
@@ -81,6 +83,7 @@ export default function Sidebar() {
       });
     }
 
+    // download the flow graph object as a JSON file
     const fileContent = reactFlowInstance.toObject();
     const a = document.createElement('a');
     const file = new Blob([JSON.stringify(fileContent)], { type: 'text/json' });

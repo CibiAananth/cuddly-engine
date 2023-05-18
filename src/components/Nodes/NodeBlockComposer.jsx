@@ -4,12 +4,18 @@
 import { Box, Flex, Text } from '@mantine/core';
 
 // utils
-import { DATA_TRANSFER_TYPE } from '@/constants/nodes';
+import { DATA_TRANSFER_MIME_TYPE } from '@/constants/utils';
 
 export default function NodeBlockComposer({ icon: Icon, title, identifier }) {
+  /**
+   *
+   * @param {object} event
+   * @description
+   * Handles the drag event and sets the data transfer mime type and node type as data.
+   */
   function dragHandler(event) {
-    event.dataTransfer.setData(DATA_TRANSFER_TYPE, identifier);
-    event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData(DATA_TRANSFER_MIME_TYPE, identifier);
+    event.dataTransfer.effectAllowed = 'copy';
   }
 
   return (

@@ -7,6 +7,15 @@ import { Text, Container, Flex } from '@mantine/core';
 // utils
 import { useValidatorFn } from '@/hooks/useValidator';
 
+/**
+ * @typedef {object} NodeComposerProps
+ * @property {function} titleRenderer - A function that returns a JSX element (render props)
+ * @property {function} contentRenderer - A function that returns a JSX element (render props)
+ * @param {NodeComposerProps} props
+ * @returns {JSX.Element}
+ * @description
+ * This component is used to compose a node.
+ */
 export default function NodeComposer({ titleRenderer, contentRenderer }) {
   return (
     <>
