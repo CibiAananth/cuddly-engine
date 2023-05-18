@@ -12,9 +12,17 @@ import { useNodeStore } from '@/hooks/useStore';
 // relative imports
 import NodeComposer from './NodeComposer';
 import NodeBlockComposer from './NodeBlockComposer';
+import { nodeFactory } from './nodeFactory';
 
 // constants
 export const MESSAGE_NODE_IDENTIFIER = 'messageNode';
+
+// node factories
+export const messageNodeFactory = nodeFactory(
+  MESSAGE_NODE_IDENTIFIER,
+  MessageNodeSettings,
+  nodeId => ({ message: `Default message for ${nodeId}` }),
+);
 
 export const MessageNodeSettings = ({ nodeId }) => {
   const node = useNodeStore(state => state.nodes.find(n => n.id === nodeId));

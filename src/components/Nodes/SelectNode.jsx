@@ -12,9 +12,16 @@ import { useNodeStore } from '@/hooks/useStore';
 // relative imports
 import NodeComposer from './NodeComposer';
 import NodeBlockComposer from './NodeBlockComposer';
+import { nodeFactory } from './nodeFactory';
 
 // constants
 export const SELECT_NODE_IDENTIFIER = 'selectNode';
+
+export const selectNodeFactory = nodeFactory(
+  SELECT_NODE_IDENTIFIER,
+  SelectNodeSettings,
+  () => ({ item: null }),
+);
 
 export const SelectNodeSettings = ({ nodeId }) => {
   const node = useNodeStore(state => state.nodes.find(n => n.id === nodeId));
